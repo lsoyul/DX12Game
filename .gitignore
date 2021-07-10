@@ -1,0 +1,7 @@
+*.sln
+.vs/
+Client/Debug/
+Client/x64/
+Engine/x64/
+x64/
+Output/
