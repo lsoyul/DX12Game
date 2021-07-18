@@ -17,7 +17,11 @@ using namespace std;
 #include <filesystem>
 namespace fs = std::filesystem;	// 파일시스템 (C++ 17)
 
-#include "d3dx12.h" // Microsoft 제공 라이브러리
+// == Microsoft 제공 라이브러리 ==
+#include "d3dx12.h"		
+#include "SimpleMath.h" 
+// ==============================
+
 #include <d3d12.h>
 #include <wrl.h>
 #include <d3dcompiler.h>
@@ -54,10 +58,10 @@ using uint8		= unsigned __int8;
 using uint16	= unsigned __int16;
 using uint32	= unsigned __int32;
 using uint64	= unsigned __int64;
-using Vec2		= XMFLOAT2;
-using Vec3		= XMFLOAT3;
-using Vec4		= XMFLOAT4;
-using Matrix	= XMMATRIX;
+using Vec2		= DirectX::SimpleMath::Vector2;
+using Vec3		= DirectX::SimpleMath::Vector3;
+using Vec4		= DirectX::SimpleMath::Vector4;
+using Matrix	= DirectX::SimpleMath::Matrix;
 
 enum class CBV_REGISTER : uint8
 {
@@ -126,5 +130,10 @@ public:							\
 #define DELTA_TIME			GET_SINGLE(Timer)->GetDeltaTime()
 
 #define CONST_BUFFER(type)	GEngine->GetConstantBuffer(type)
+
+struct TransformParams
+{
+	Matrix matWVP;
+};
 
 extern unique_ptr<class Engine> GEngine;

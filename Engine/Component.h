@@ -6,6 +6,7 @@ enum class COMPONENT_TYPE : uint8
 {
 	TRANSFORM,
 	MESH_RENDERER,
+	CAMERA,
 	//...
 	MONO_BEHAVIOUR,
 	END,
@@ -32,13 +33,14 @@ public:
 	virtual void Start() { }
 	virtual void Update() { }
 	virtual void LateUpdate() { }
+	virtual void FinalUpdate() { }	// 찐막 업데이트
 
 public:
 	COMPONENT_TYPE GetType() { return _type; }
 	bool IsValid() { return _gameObject.expired() == false; }
 
 	shared_ptr<GameObject> GetGameObject();
-	shared_ptr<Transform> GetTransfrom();
+	shared_ptr<Transform> GetTransform();
 
 private:
 	friend class GameObject;

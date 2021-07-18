@@ -6,9 +6,10 @@
 // [root constant / root table / root descriptor]
 //  => 데이터를 묘사(참조) 하는 용도. 실제 데이터는 없다.
 // [b0(HLSL bind slot)]
-cbuffer TEST_B0 : register(b0)
+cbuffer TRANSFORM_PARAMS : register(b0)
 {
-	float4 offset0;
+	// row_major -> 행렬 접근순서 정의 (DirectX와 쉐이더에서 행렬 값 접근순서가 다르기 때문)
+	row_major matrix matWVP;
 };
 
 cbuffer MATERIAL_PARAMS : register(b1)
@@ -53,13 +54,8 @@ VS_OUT VS_Main(VS_IN input)
 {
 	VS_OUT output = (VS_OUT)0;
 
-	output.pos = float4(input.pos, 1.f);
-	//output.pos += offset0;
-
-	output.pos.x += float_0;
-	output.pos.y += float_1;
-	output.pos.z += float_2;
-
+	output.pos = mul(float4(input.pos, 1.f), matWVP);
+	
 	output.color = input.color;
 	output.uv = input.uv;
 
