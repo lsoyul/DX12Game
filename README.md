@@ -1,3 +1,3 @@
 # DX12Game
 
-- C++ with DX12 Engine
+- Let's Make DX12 Game Engine!! :)
