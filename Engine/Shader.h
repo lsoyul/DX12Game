@@ -1,10 +1,13 @@
 #pragma once
-
+#include "Object.h"
 
 // [일감 기술서] GPU가 무엇을 해야할지 기술
-class Shader
+class Shader : public Object
 {
 public:
+	Shader();
+	virtual ~Shader();
+
 	void Init(const wstring& path);
 	void Update();
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Object.h"
 
 // ENUM COMPONENT_TYPE => 각 컴포넌트들의 슬롯 넘버 개념 (중복될 수 없음)
 enum class COMPONENT_TYPE : uint8
@@ -22,7 +22,7 @@ class GameObject;
 class Transform;
 
 
-class Component
+class Component : public Object
 {
 public:
 	Component(COMPONENT_TYPE type);

@@ -4,6 +4,16 @@
 #include "Material.h"
 
 
+Mesh::Mesh() : Object(OBJECT_TYPE::MESH)
+{
+
+}
+
+Mesh::~Mesh()
+{
+
+}
+
 void Mesh::Init(const vector<Vertex>& vertexBuffer, const vector<uint32>& indexBuffer)
 {
 	CreateVertexBuffer(vertexBuffer);
