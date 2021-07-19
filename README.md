@@ -1,3 +1,2 @@
 # DX12Game
-
-- Let's Make DX12 Game Engine!! :)
+- DX12 Game Engine!! :)
