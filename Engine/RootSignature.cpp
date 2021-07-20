@@ -14,16 +14,17 @@ void RootSignature::CreateRootSignature()
 	CD3DX12_DESCRIPTOR_RANGE ranges[] =
 	{
 		// param3 = 0번 레지스터부터 사용하겠다.
-		CD3DX12_DESCRIPTOR_RANGE(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, CBV_REGISTER_COUNT, 0), // b0 ~ b4 (Context Buffer View)
-		CD3DX12_DESCRIPTOR_RANGE(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, SRV_REGISTER_COUNT, 0), // t0 ~ t4 (Shader Resource View)
+		CD3DX12_DESCRIPTOR_RANGE(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, CBV_REGISTER_COUNT - 1, 1),	// b1 ~ b4 (Context Buffer View)
+		CD3DX12_DESCRIPTOR_RANGE(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, SRV_REGISTER_COUNT, 0),		// t0 ~ t4 (Shader Resource View)
 	};
 
 
-	CD3DX12_ROOT_PARAMETER param[1];
+	CD3DX12_ROOT_PARAMETER param[2];
 	//param[0].InitAsConstantBufferView(0);	// shaderRegister 0번 -> b0 -> CBV
 	//param[1].InitAsConstantBufferView(1);	// shaderRegister 1번 -> b1 -> CBV
 
-	param[0].InitAsDescriptorTable(_countof(ranges), ranges);
+	param[0].InitAsConstantBufferView(static_cast<uint32>(CBV_REGISTER::b0));
+	param[1].InitAsDescriptorTable(_countof(ranges), ranges);
 
 
 	D3D12_ROOT_SIGNATURE_DESC sigDesc = CD3DX12_ROOT_SIGNATURE_DESC(_countof(param), param, 1, &_samplerDesc);

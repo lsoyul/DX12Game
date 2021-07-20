@@ -19,7 +19,7 @@ public:
 
 	// 실제 World에서의 Matrix (parent->world)
 	const Matrix& GetLocalToWorldMatrix() { return _matWorld; }
-	const Vec3& GetWorldPosition() { return _matWorld.Translation(); }
+	Vec3 GetWorldPosition() { return _matWorld.Translation(); }
 
 	// Right, Up, Look 은 World Space 기준!
 	Vec3 GetRight() { return _matWorld.Right(); }
