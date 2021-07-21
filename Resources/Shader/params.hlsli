@@ -52,6 +52,12 @@ cbuffer MATERIAL_PARAMS : register(b2)
 	float	g_float_2;
 	float	g_float_3;
 	float	g_float_4;
+
+	int		g_tex_on_0;	// 쉐이더에서 널체크 할 수 없기 때문에, 사용여부를 넘겨줌.
+	int		g_tex_on_1;
+	int		g_tex_on_2;
+	int		g_tex_on_3;
+	int		g_tex_on_4;
 };
 
 Texture2D g_tex_0 : register(t0);
