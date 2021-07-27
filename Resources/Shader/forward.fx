@@ -1,8 +1,8 @@
-#ifndef _DEFAULT_HLSLI_
-#define _DEFAULT_HLSLI_
+#ifndef _DEFAULT_FX_
+#define _DEFAULT_FX_
 
-#include "params.hlsli"
-#include "utils.hlsli"
+#include "params.fx"
+#include "utils.fx"
 
 // cbuffer: constant buffer
 // One Constant (그래픽카드 레지스터에 등록되는 Root Table 단위)

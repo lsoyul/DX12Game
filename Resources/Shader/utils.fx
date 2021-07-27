@@ -1,5 +1,7 @@
-#ifndef _UTILS_HLSLI_
-#define _UTILS_HLSLI_
+#ifndef _UTILS_FX_
+#define _UTILS_FX_
+
+#include "params.fx"
 
 // lightIndex == 몇번째 광원인지
 LightColor CalculateLightColor(int lightIndex, float3 viewNormal, float3 viewPos)
