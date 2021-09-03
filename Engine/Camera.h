@@ -15,7 +15,10 @@ public:
 	virtual ~Camera();
 
 	virtual void FinalUpdate() override;
-	void Render();
+
+	void SortGameObject();
+	void Render_Deferred();
+	void Render_Forward();
 
 	void SetCullingMaskLayerOnOff(uint8 layer, bool on)
 	{
@@ -30,6 +33,7 @@ public:
 	bool IsCulled(uint8 layer) { return (_cullingMask & (1 << layer)) != 0; }
 
 	void SetProjectionType(PROJECTION_TYPE type) { _type = type; }
+	PROJECTION_TYPE GetProjectionType() { return _type; }
 
 private:
 	PROJECTION_TYPE _type = PROJECTION_TYPE::PERSPECTIVE;
@@ -44,6 +48,10 @@ private:
 
 	Frustum _frustum;
 	uint32 _cullingMask = 0;
+
+private:
+	vector<shared_ptr<GameObject>>	_vecDeferred;
+	vector<shared_ptr<GameObject>>	_vecForward;
 
 public:
 	// TEMP
